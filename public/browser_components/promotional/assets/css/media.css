@@ -1,0 +1,524 @@
+@media only screen  and (min-width: 1200px){
+	.navbar-default {
+		padding-left: 16%;
+	}
+   .container{
+	  width:70%;
+    }
+	 .feature-div .feature-span {
+        width: 20%;
+		float:left;
+		padding: 10px;
+    }
+}
+@media only screen  and (min-width: 1600px){
+.logo-div img{
+		width:373px;
+		height:70px;
+}
+.navbar-brand {
+    width: 250px;
+    height: 51px;
+	margin: 9px 15px 10px 15px;
+}
+.navbar-default .navbar-nav > li > a {
+   font-size: 19px;
+   height: 51px;
+   line-height: 51px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+	font-size:20px;
+}
+.icon-scroll {
+   width: 40px;
+   height: 70px;
+}
+.app-screen img{
+	width:300px;
+	height:606px;
+}
+.banner-text p {
+    font-size: 27px;
+}
+ul.app-download-btn li.download-btn-app a img{
+	width:190px;
+	height:70px;
+}
+.content-section .heading {
+    padding:50px 0px 20px 0px;
+}
+.heading h1 {
+   font-size: 45px;
+}
+.heading p {
+   font-size: 22px;
+}
+.feature-text p {
+  font-size: 18px;
+}
+#play-video img{
+   width:80px;
+   height:80px;
+}
+.video-screen .play-text h2 {
+  font-size: 38px;
+}
+.video-screen .play-text p {
+   font-size: 23px;
+}
+.app-feature-img img{
+	width:469px;
+	height:718px;
+}
+.app-feature-text h3 {
+    font-size: 60px;
+}
+.app-feature-text p {
+  font-size: 28px;
+}
+.app-feature-section .app-feature-right h4 {
+    font-size: 25px;
+	}
+.app-feature-section .app-feature-right p {
+   font-size: 24px;
+    margin-bottom: 39px;
+}
+.vission_box p {
+   font-size: 24px;
+    margin-bottom: 39px;
+}
+.testimonial h4 {
+  font-size: 39px;
+}
+.vission h4 {
+  font-size: 39px;
+} 
+#testimonial .item p {
+   font-size: 25px;
+}
+.testimonial-user-info h5 {
+   font-size: 19px;
+}
+.testimonial-user-info h6 {
+   font-size: 17px;
+}
+.testimonial-user-div {
+    width: 60px;
+    height: 60px;
+}
+.social-div {
+    padding: 60px 0px;
+}
+ul.social-icon li a i {
+  font-size: 30px;
+}
+ul.social-icon li a {
+  color: #ea9f20;
+  font-size: 18px;
+}
+.download-img-div img{
+	width:414px;
+	height:519px;
+}
+.download-screen h6 {
+  font-size: 45px;
+}
+.download-screen p{
+  font-size: 23px;
+}
+footer .footer-logo-text p {
+   font-size: 25px;
+}
+footer .footer-logo-text p a {
+   font-size: 25px;
+}
+.footer-logo img{
+	width:100px; 
+	height:100px;
+}
+footer ul.footer-icon li a {
+    font-size: 29px;
+}
+.hide-location{
+	 font-size: 20px;
+}
+	.feature1 img{
+		width:58px;
+		height:62px;
+	}
+	.feature2 img{
+		width:56px;
+		height:45px;
+	}
+	.feature5 img{
+		width:54px;
+		height:54px;
+	}
+	.feature4 img{
+		width:54px;
+		height:51px;
+	}
+	.feature3 img{
+		width:35px;
+		height:78px;
+	}
+.feature-div .icon {
+	height: 65px;
+}
+.about-us-text p {
+    font-size: 28px;
+    line-height: 35px;
+    margin-top: 20px;
+}
+.inner-pages {
+    padding: 190px 0px;
+}
+.banConbox.inner .bantext .banheading {
+   font-size: 64px;
+   line-height: 70px;
+}
+.banConbox.inner .bantext .bansmt {
+   font-size: 26px;
+}
+.wanna-touch{
+	width: 780px;
+}
+.info-title > h3 {
+   font-size: 53px;
+}
+.view-location {
+    font-size: 23px;
+    margin-top: 40px;
+    padding: 30px 47px;
+}
+.contact-info-list > ul > li {
+    font-size: 28px;
+    line-height: 50px;
+    margin: 7px 0;
+}
+.about-us-text p {
+    font-size: 28px;
+    line-height: 35px;
+    margin-top: 20px;
+    margin-bottom: 45px;
+}
+.form-section h1 {
+  font-size: 35px;
+}
+.contactus-page p {
+    line-height: 30px;
+    font-size: 20px;
+}
+.form-section input[type="text"], .form-section input[type="email"] {
+    font-size: 22px;
+    height: 66px;
+}
+.form-section textarea{
+	font-size: 22px;
+}
+.submit-btn {
+    font-size: 15px;
+    padding: 19px 46px;
+}
+}
+@media only screen  and (min-width: 1920px){
+
+ .navbar-brand {
+    width: 250px;
+    height: 51px;
+	margin: 9px 15px 10px 15px;
+}
+.navbar-default .navbar-nav > li > a {
+   font-size: 20px;
+   height: 51px;
+   line-height: 51px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+	font-size:21px;
+}
+.icon-scroll {
+   width: 40px;
+   height: 70px;
+}
+
+.app-screen img{
+	width:360px;
+	height:727px;
+}
+.banner-text p {
+    font-size: 27px;
+}
+ul.app-download-btn li.download-btn-app a img{
+	width:190px;
+	height:70px;
+}
+.heading h1 {
+   font-size: 60px;
+}
+.heading p {
+    font-size: 28px;
+}
+.feature-text p {
+   font-size: 20px;
+}
+#play-video img{
+		width:90px;
+		height:90px;
+}
+.video-screen .play-text h2 {
+    font-size: 43px;
+}
+.video-screen .play-text p {
+    font-size: 29px;
+}
+.app-feature-img img{
+	width:469px;
+	height:718px;
+}
+.app-feature-text h3 {
+    font-size: 60px;
+}
+.app-feature-text p {
+  font-size: 33px;
+}
+.app-feature-section .app-feature-right h4 {
+    font-size: 25px;
+}
+.app-feature-section .app-feature-right p {
+   font-size: 24px;
+    margin-bottom: 39px;
+}
+.vission_box p {
+   font-size: 24px;
+    margin-bottom: 39px;
+}
+.testimonial h4 {
+	font-size: 50px;
+}
+.vission h4 {
+	font-size: 50px;
+}
+#testimonial .item p {
+   font-size: 31px;
+}
+.testimonial-user-info h5 {
+   font-size: 19px;
+}
+.testimonial-user-info h6 {
+   font-size: 17px;
+}
+.testimonial-user-div {
+    width: 60px;
+    height: 60px;
+}
+.social-div {
+    padding: 60px 0px;
+}
+ul.social-icon li a i {
+    font-size: 29px;
+}
+ul.social-icon li a {
+  color: #ea9f20;
+  font-size: 24px;
+}
+.download-img-div img{
+	width:414px;
+	height:519px;
+}
+.download-screen h6 {
+  font-size: 60px;
+}
+.download-screen p{
+  font-size: 23px;
+}
+footer .footer-logo-text p {
+    font-size: 22px;
+}
+footer .footer-logo-text p a {
+    font-size: 22px;
+}
+.footer-logo img{
+	width:100px; 
+	height:100px;
+}
+footer ul.footer-icon li a {
+    color: #ccc;
+    font-size: 31px;
+}
+	.feature1 img{
+		width:68px;
+		height:72px;
+	}
+	.feature2 img{
+		width:66px;
+		height:53px;
+	}
+	.feature5 img{
+		width:64px;
+		height:64px;
+	}
+	.feature4 img{
+		width:64px;
+		height:61px;
+	}
+	.feature3 img{
+		width:35px;
+		height:78px;
+	}
+.feature-div .icon {
+    height: 61px;
+}
+}
+
+@media only screen and (max-width: 359px) {
+  .wanna-touch{
+       padding: 50px 0px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+.mouse-click.text-right {
+    position: absolute;
+    bottom: 12%;
+    left: 25%;
+}
+#testimonial .item p {
+   font-size: 17px;
+}
+}
+@media only screen and (max-width: 768px) {
+	 .feature-div .feature-span {
+        width: 100%;
+		float:left;
+		padding: 10px;
+    }
+}
+@media only screen and (max-width: 767px) {
+ .mouse-click.text-right {
+    position: absolute;
+    bottom: 10%;
+    left: 0%;
+}
+span.view-location{
+	display:none;
+}
+.wanna-touch-inner {
+    float: left;
+    padding: 0;
+    position: static;
+    -webkit-transform: translate(0px);
+    -moz-transform: translate(0px);
+    -ms-transform: translate(0px);
+    -o-transform: translate(0px);
+    transform: translate(0px);
+    width: 100%;
+}
+.wanna-touch {
+    float: left;
+    position: static;
+    -webkit-transform: translate(0px);
+    -moz-transform: translate(0px);
+    -ms-transform: translate(0px);
+    -o-transform: translate(0px);
+    transform: translate(0px);
+    width: 100%;
+}
+.landscape-iphone-screen-div img{
+	padding:10px 0px 0px 0px;
+}
+#testimonial.owl-theme .owl-next , #testimonial.owl-theme .owl-prev {
+	display:none!important;
+}
+.download-screen{
+	padding:20px 0px 20px 0px;
+}
+#testimonial .item p{
+	padding:10px 0px;
+}
+.text-left.mobile-center{
+	text-align:center;
+}
+.testimonial-user-div {
+    float: none;
+    margin: 0 auto;
+	margin-bottom:20px;
+}
+.mobile-padding{
+	padding-left:15px;
+	padding-right:15px;
+}
+.app-download-btn li{
+	margin-bottom:20px;
+}
+.banner{
+	padding: 20px 0px 0px 0px;
+}
+.content-wrapper.banner-wrapper {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.banner-text p {
+   font-size: 16px;
+}
+.banner {
+	height:auto!important;
+}
+}
+@media only screen and (max-width: 359px) {
+.mouse-click.text-right {
+    position: absolute;
+    bottom: 5%;
+    left: -3%;
+}
+}
+
+@media only screen and (max-width: 1599px) {
+	.logo-div img{
+		width:273px;
+		height:51px;
+	}
+	.app-screen img{
+		width:250px;
+		height:505px;
+	}
+	ul.app-download-btn li.download-btn-app a img{
+		width:160px;
+		height:59px;
+	}
+	#play-video img{
+		width:50px;
+		height:50px;
+	}
+	.app-feature-img img{
+		width:369px;
+		height:565px;
+	}
+	.download-img-div img{
+		width:314px;
+		height:394px;
+	}
+	.footer-logo img{
+		width:80px; 
+		height:80px;
+	}
+	.feature1 img{
+		width:34px;
+		height:36px;
+	}
+	.feature2 img{
+		width:40px;
+		height:32px;
+	}
+	.feature5 img{
+		width:32px;
+		height:32px;
+	}
+	.feature4 img{
+		width:32px;
+		height:30px;
+	}
+	.feature3 img{
+		width:23px;
+		height:51px;
+	}
+}

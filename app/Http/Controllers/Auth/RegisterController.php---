@@ -1,0 +1,178 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use App\User;
+use App\Sector;
+use App\Userdetail;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Socialite;
+use DB;
+use Auth;
+class RegisterController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers,ThrottlesLogins;
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/quizz';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+       // print_r($data);exit;
+        return Validator::make($data, [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],            
+            'email' => $data['email'],
+            'gender' => $data['gender'],
+            'type_of_person' => "",
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+    public function redirectToLinkedin()
+    {
+        return Socialite::driver('linkedin')->redirect();
+    }
+    public function handleLinkedinCallback()
+    {
+        $data = Socialite::driver('linkedin')->stateless()->user();  
+        if(!isset($data))
+        {
+            return redirect()->route('login'); 
+            exit;
+        }
+        $linkdinid= $data->id;
+        $arr=   $data->user;
+        $avatar= $data->avatar_original;
+        $sector=Sector::where('LinkedinDescription','=',$arr['industry'])->first(); 
+        $address=$arr['location']['name']." ";
+        $prepAddr = str_replace(' ','+',$address);        
+        $geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');         
+        $output= json_decode($geocode);         
+        $lat = $output->results[0]->geometry->location->lat;
+        $long = $output->results[0]->geometry->location->lng;      
+        $arr['first_name']=$arr['firstName'];       
+        $arr['last_name']=$arr['lastName'];       
+        $arr['email']=$arr['emailAddress'];       
+        $arr['gender']="MR";       
+        $arr['password']=$linkdinid;       
+        $count = User::where('linkedin_id','=',$linkdinid)->count(); 
+        if($count == 0)           
+        { 
+           $userDetail= User::create([
+                'first_name' => $arr['firstName'],
+                'last_name' => $arr['lastName'],            
+                'email' =>  $arr['emailAddress'],           
+                'profilepic' =>  $avatar, 
+                'address' => $address ,         
+                'lat' => $lat,           
+                'long' => $long,           
+                'linkedin_id' =>  $linkdinid, 
+                'password' => Hash::make( $linkdinid),
+          
+            ]); 
+        }
+        else
+        {
+            User::where('linkedin_id', $linkdinid)->update([
+                 'first_name' => $arr['firstName'],
+            'last_name' => $arr['lastName'],            
+            'email' =>  $arr['emailAddress'],           
+            'profilepic' =>  $avatar, 
+            'address' => $address ,         
+            'lat' => $lat,           
+            'long' => $long,           
+            'linkedin_id' =>  $linkdinid, ]);
+            $userDetail = User::where('linkedin_id','=',$linkdinid)->first(); 
+      
+        }
+        $CountUserDetail = Userdetail::where('userid','=',$userDetail->id)->count(); 
+        if($CountUserDetail == 0)           
+        { 
+            Userdetail::create([
+                'sector' => $sector->id.',',
+                'userid' => $userDetail->id,   
+                'company_name' => '',   
+                'type_of_company' => '',   
+                'slogan' => '',   
+                'query' => '',   
+                'description' => '',   
+                'website' => '',   
+                'linkedin' => '',   
+                'facebook' => '',   
+                'twitter' => '',   
+                'google' => '',   
+            ]); 
+        }
+        else
+        {
+            Userdetail::where('userid', $userDetail->id)->update([
+                'sector' => $sector->id.',',
+                'company_name' => '',   
+                'type_of_company' => '',   
+                'slogan' => '',   
+                'query' => '',   
+                'description' => '',   
+                'website' => '',   
+                'linkedin' => '',   
+                'facebook' => '',   
+                'twitter' => '',   
+                'google' => '', 
+                ]);      
+        }
+        
+        Auth::loginUsingId($userDetail->id);
+        return redirect()->route('quizz');         
+    }
+}   

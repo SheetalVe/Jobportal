@@ -1,0 +1,154 @@
+<?php
+
+namespace App\Http\Controllers\frontend;
+
+use App\User;
+use App\Userdetail;
+use App\Userdoc;
+use DB;
+use App\Models\frontend\SectorModel;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\frontend\YoutubeModel;
+use App\Models\frontend\ConnectUserProfileStatusModel;
+use App\Models\frontend\linkdin_people;
+
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+class ContactController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+    public function index()
+    {
+        return view('frontend.connect.contact');
+    }
+    protected function connect_my_profile(Request $request)
+    {
+        if($request->id)
+        {           
+            $userdata=User::
+            select('users.id as userid','userdetails.*','users.*','social_linkdin_accounts.*')
+            ->leftJoin('userdetails', function($join) {
+                $join->on('users.id', '=', 'userdetails.userid');
+            })->
+            leftJoin('social_linkdin_accounts', function($join) {
+                $join->on('social_linkdin_accounts.userid', '=', 'users.id');
+            })
+            ->where('users.id', $request->id)           
+            ->first(); 
+            $sectorDetail=explode(",",$userdata->sector);
+            $sector="";
+            foreach($sectorDetail as $sectors)
+            {
+                $sectordata=SectorModel::where('id',$sectors)->first();
+                if(isset($sectordata->sector))
+                {
+                    $sector .=  $sectordata->sector." | ";
+                }
+                else
+                {
+                    $sector="";
+                }                
+            }
+        }
+        $youtubedata = YoutubeModel::where('user_id', $request->id)->get();
+        $linkdin_people = linkdin_people::where('user_id',  $request->id)->get();
+
+        $Youtube=array("");
+        foreach($youtubedata as $youtubedata)
+        {            
+            $expdata=explode("v=",$youtubedata->youtube_url);
+            if(isset($expdata[1]) && $expdata[1] != "")
+            {
+                $Youtube[]=$expdata[1];
+            }
+           else
+           {
+            $Youtube[]="";
+           }
+        }
+        //echo  $request->id;exit;
+        $userdoc=Userdoc::
+        select('documentmaster.doc_type as doctype','userdocs.doc_name as docname')
+        ->leftJoin('documentmaster', function($join) {
+            $join->on('documentmaster.id', '=', 'userdocs.doc_type');
+        })       
+        ->where('userdocs.user_id', $request->id)           
+        ->get(); 
+        $connectprofile = ConnectUserProfileStatusModel::where('request_id', $request->id)->where('user_id', Auth::user()->id)->first();  
+        $userdata['reqid']=$request->id;
+
+        return view('frontend.connect.connectmyprofile', ['userdata' => $userdata,'sector' => $sector,'Youtube' => $Youtube,'linkdin_people' => $linkdin_people,'userdoc' => $userdoc,'connectprofile' => $connectprofile]);
+    }
+    protected function docacceptreject(Request $request)
+    {
+        if($request->id)
+        {   ConnectUserProfileStatusModel::where('user_id',$request->id )->where('request_id',Auth::user()->id )->update([
+            'isdocpermission' => $request->status,  
+        ]);        
+        }
+        return Redirect::back()->with('message','Operation Successful !');
+    }
+    protected function connect(Request $request)
+    {
+        if($request->id)
+        {   $deletedRows = ConnectUserProfileStatusModel::where('user_id',Auth::user()->id )->where('request_id',$request->id )->delete();
+            ConnectUserProfileStatusModel::create([              
+                'user_id' =>Auth::user()->id ,
+               'request_id' =>$request->id,
+               'status' =>'pending',
+            ]);       
+        }
+        return Redirect::back()->with('message','Operation Successful !');
+
+
+    }
+    protected function docrequest(Request $request)
+    {
+        if($request->id)
+        {  
+            ConnectUserProfileStatusModel::where('user_id',Auth::user()->id )->where('request_id',$request->id )->update([
+                'isdocpermission' => $request->status,  
+            ]);          
+        }
+        return Redirect::back()->with('message','Operation Successful !');
+    }
+    protected function acceptreject(Request $request)
+    {
+        if($request->id)
+        {   $deletedRows = ConnectUserProfileStatusModel::where('request_id',Auth::user()->id )->where('user_id',$request->id )->delete();
+            ConnectUserProfileStatusModel::create([              
+                'request_id' =>Auth::user()->id ,
+               'user_id' =>$request->id,
+               'status' =>$request->status,
+            ]);       
+        }
+        return Redirect::back()->with('message','Operation Successful !');
+
+
+    }
+  
+
+    protected function search(Request $request)
+    {
+        $searchstr=$request->search;
+        $searchdata=User::
+        select('users.id as userid','userdetails.*','users.*')
+        ->leftJoin('userdetails', function($join) {
+            $join->on('users.id', '=', 'userdetails.userid');
+        })
+       ->
+      where('users.email', $searchstr)
+        ->orWhere('users.first_name', 'like', '%' .$searchstr . '%')
+        ->orWhere('users.last_name', 'like', '%' .$searchstr . '%')
+        ->orWhere('userdetails.company_name', 'like', $searchstr . '%')
+        ->orWhere('userdetails.company_name', 'like', '%' .$searchstr )
+        ->get(); 
+        return view('frontend.connect.contact', ['searchdata' => $searchdata]);    
+    }
+}

@@ -1,0 +1,213 @@
+
+.box {
+    position: relative;
+    border-radius: 0px;
+    background: #ffffff;
+    border-top: 0px ;
+    margin-bottom: 0px;
+    width: 100%;
+    box-shadow: none;
+}
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 0px;
+}
+.box {padding: 0px!important;}
+.top-box{
+  padding: 15px;
+}
+.top-box{
+  position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+img{
+    height: 73px;
+    width: 98px;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #17365e!important;
+}
+.skin-blue .main-header .logo {
+    background-color: #17365e;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+.skin-blue .main-header .logo:hover {
+    background-color: #17365e;
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color: #17365e;
+}
+.skin-blue .sidebar-menu>li.active>a,.skin-blue .sidebar-menu>li:hover>a {
+    color: #fff;
+    background: #1e282c;
+    border-left-color: #17365e;
+}
+.user-panel>.image>img {
+    width: 100%;
+    max-width: 100%;
+    width: 50px;
+    height: 50px;
+}
+.btn-primary,.btn-primary:hover, .btn-primary:active, .btn-primary.hover {
+    background-color: #17365e!important;
+    border-color: #17365e!important;
+}
+.add-type-button {
+    margin: 0px 0 12px 0px;
+    position: absolute;
+    right: 26px;
+    top: 30px;
+}
+.edit-quiz-button:hover {
+    background: #32995c !important;
+    transition: all 0.2s ease;
+}
+.edit-quiz-button {
+    width: 35px;
+    background: #56bd80 !important;
+    border: 0; 
+    margin: 0 5px;
+    transition: all 0.2s ease;
+}
+.delete-quiz-button:hover {
+    background: #b3120a  !important;
+    transition: all 0.2s ease;
+}
+.delete-quiz-button {
+    width: 35px;
+    background: #cc2b23 !important;
+    border: 0; 
+    margin: 0 5px;
+    transition: all 0.2s ease;
+}
+.error-msg{
+    width: 408px;
+    margin: 0px 11px 0 15px;
+}
+
+.alert.alert-success.error-message {
+    background-color: #ceead6!important;
+    color: black !important;
+    border-color:  #CEEAD9!important ;
+}
+.addoptions a.add_button {
+    background: #405ee1;
+    padding: 5px 0;
+    color: #fff;
+    display: block;
+    width: 80px;
+    text-align: center;
+    margin: 8px 0 15px;
+    border-radius: 3px; 
+}
+.field_wrapper a.remove_button {
+    color: #fff;
+    background: #d51111;
+    padding: 2px 12px 6px;
+    font-size: 20px;
+    margin-left: 4px;
+}
+.addoptions .field_wrapper input{
+    width: 90%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.box-body {
+    padding: 25px;
+}
+.box-header {
+    display: inline-block;
+}
+.box-header .box-title:after {
+    content: '';
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    background: #17365e;
+    right: -13px;
+    transform: rotate(45deg);
+    top: 6px;
+}
+.box-header .box-title {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    background: #17365e;
+    padding: 10px 20px;
+    margin-left: 15px;
+    position: relative;
+}
+.updateBtn {
+    margin: 15px auto;
+}
+.imagesList input {
+    width: 90%;
+    display: inline-block;
+    margin:5px auto;
+}
+.imagesList li:hover a{
+    opacity: 1;
+    transition: all 0.2s ease;
+    pointer-events: unset;
+}
+.imagesList li a{
+    position: absolute;
+    right: -5px;
+    font-size: 12px;
+    width: 22px;
+    padding: 2px 0;
+    border-radius: 0;
+    opacity: 0;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+.imagesList li {
+    display: inline-block;
+    margin-right: 8px;
+    position: relative;
+}
+
+.imagesList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.file-attachment:before {
+    content: '\f0c6';
+    position: absolute;
+    height: 27px;
+    width: 27px;
+    background: #5b9bd5;
+    top: 0;
+    z-index: 2;
+    display: block;
+    font-family: fontawesome;
+    color: #fff;
+    padding: 2px 7px;
+    font-size: 16px;
+}
+.file-attachment input {
+    margin-left: -50px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: #333;
+    height: 27px;
+    margin-bottom: 10px;
+    padding: 0;
+    max-width: 280px;
+}
+.file-attachment {
+    overflow: hidden;
+    position: relative;
+}
