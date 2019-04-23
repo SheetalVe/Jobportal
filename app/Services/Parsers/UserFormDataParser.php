@@ -15,8 +15,7 @@ class UserFormDataParser implements FormDataParser
 {
     public function parse($request) {
         $addapplicationform = new  ApplicationForm;
-        $addapplicationform->genrated_id = Str::random(32);
-        
+        $addapplicationform->genrated_id = Str::random(32);        
         $addapplicationform->position_applied = Crypt::encryptString($request->position_applied);
         $addapplicationform->exp_sal = Crypt::encryptString($request->exp_sal);
         $addapplicationform->when_join_company = Crypt::encryptString($request->when_join_company);
